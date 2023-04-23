@@ -1,0 +1,60 @@
+
+http:
+  listener:
+    host: "0.0.0.0"
+    port: "8085"
+  requester:
+      sapi:
+        host: "0.0.0.0"
+        port: "8086"
+        pathCustomerState: "/api/customerState"
+        pathVerification: "/api/verification"
+        pathCustomerRegistration: "/api/customers/registration"
+      papi:
+        host: "0.0.0.0"
+        port: "8085"
+        pathCustomerState: "/api/customerState"
+        pathVerification: "/api/verification"
+
+
+    
+        
+            
+                
+                    
+                        
+                            
+                                
+                                    
+                                        
+                                            
+                                                
+                                                    
+                                                        
+                                                            
+                                                                
+                                                                    
+                                                                        
+                                                                            
+                                                                                
+                                                                                    
+                                                                                        
+                                                                                            
+                                                                                                
+                                                                                                    
+                                                                                                        
+                                                                                                            
+                                                                                                                
+                                                                                                                    
+                                                                                                                        
+                                                                                                                            
+                                                                                                                                
+                                                                                                                                    
+                                                                                                                                            
+sfdc:
+  username: "mulesoftenthusiast@gmail.com"
+  password: "Silky12345"
+  securityToken: "AFhvGSow32ZWhX331GcMM9my"
+
+
+
