@@ -74,12 +74,12 @@ output application/json
     "contactType": vars.requestPayload.registrationRequest.contactType,
     "countryCode": vars.requestPayload.registrationRequest.countryCode,
     "mobile": vars.requestPayload.registrationRequest.mobile,
-    "messageContent": "12345"
+    "message": "12345"
   }
 }]]></ee:set-payload>
 							</ee:message>
 						</ee:transform>
-						<http:request method="POST" doc:name="Request Customer Verification PAPI" doc:id="0d246e69-59ac-46cb-8403-28e4b28f0460" config-ref="HTTP_Request_configuration_Customer_PAPI" path="${http.requester.customer.papi.pathVerification}">
+						<http:request method="POST" doc:name="Request Customer Verification PAPI" doc:id="0d246e69-59ac-46cb-8403-28e4b28f0460" config-ref="HTTP_Request_configuration_Customer_PAPI" path="${http.requester.customer.papi.pathVerification}" responseTimeout="100000000">
 							<http:headers ><![CDATA[#[output application/java
 ---
 {
@@ -87,6 +87,9 @@ output application/json
 	"x-cms-transactionId" : vars.headers.'x-cms-transactionId',
 	"clientId" : vars.headers.clientId
 }]]]></http:headers>
+							<http:response-validator >
+								<http:success-status-code-validator values="200..600" />
+							</http:response-validator>
 						</http:request>
 						<choice doc:name="Choice" doc:id="d90a52bf-4d0d-451c-8ddc-f0f617998574" >
 							<when expression="#[attributes.statusCode != 200 and attributes.statusCode != 201]">

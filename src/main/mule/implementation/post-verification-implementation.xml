@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<flow name="post-verification-implementation-Flow"
 		doc:id="32898bdf-dd57-42a3-8676-6737f2a51567">
 		<logger level="INFO" doc:name="Request Logger Fro SFDC Call " doc:id="adaffd52-dd65-44ba-8995-6b8566367b10" message="#[%dw 2.0&#10;output application/json indent = false  &#10;---  &#10;{  	&#10;    TimeStamp: now(), 	&#10;    transactionId: vars.headers.'x-cms-transactionId', 	&#10;    AppName: app.name, 	&#10;    FlowName: flow.name, 	&#10;    BusinessProcessName:  &quot;Verification&quot;, 	&#10;    Category:  &quot;Customer&quot;, 	&#10;    OriginatingApplication:  &quot;Experience API&quot;, 	&#10;    DesinationApplication:  &quot;System API&quot;, 	&#10;    CustomerId: &quot;NA&quot;, 	&#10;    txnState:  &quot;SAPI Request&quot; &#10;}]"/>
-	<http:request method="POST" doc:name="Request Customer SAPI" doc:id="42f7a0ec-60cc-47da-bef6-9c4ff75f4e57" path="${http.requester.customer.sapi.pathVerification}" config-ref="HTTP_Request_configuration_Customer_SAPI">
+	<http:request method="POST" doc:name="Request Customer SAPI" doc:id="42f7a0ec-60cc-47da-bef6-9c4ff75f4e57" path="${http.requester.customer.sapi.pathVerification}" config-ref="HTTP_Request_configuration_Customer_SAPI" responseTimeout="100000000">
 			<http:body ><![CDATA[#[vars.requestPayload]]]></http:body>
 			<http:headers ><![CDATA[#[output application/java
 ---
